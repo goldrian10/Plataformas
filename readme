@@ -1,0 +1,3 @@
+Para ejecutar el programa adjunto se debe de compilar con gcc con el comando 
+gcc lab4.c y luego para ejecutar se usa ./a.out, luego el programa va a pedir
+los datos de los estudiantes que se quieran ingresar y luego los va a mostrar en pantalla
