@@ -1,7 +1,5 @@
 #include <stdio.h> 
-#include <stdbool.h>
-#include <stdlib.h>
-
+#define SIZE 5
 //enum enumera una lista de palabras, de esta forma se puede hacer una pregunta cerrada al usuario
 //de una forma mas rapida y facil y asi tambien eliminar el factor de que el usuario escriba mal el 
 //nombre del dato que necesito 
@@ -22,13 +20,9 @@ struct datos_persona {
 	
 };
 
-void num_datos(int *ptr_datos){
-	scanf("%i",ptr_datos);
-}
-
 //se crean una funcion set que pida valores al usuario y que con el puntero del estruct los vaya almacenando en las 
 //casillas correspondientes
-void set_struct (struct datos_persona *ptr_struct, int selector,int cantidad,int *ptr_datos){
+void set_struct (struct datos_persona *ptr_struct, int selector){
 	printf("\nDigite los datos del estudiante %d\n ",selector+1);
 	printf("Digite su nombre.\n");
 	scanf("%s", ptr_struct->nombre);
@@ -57,7 +51,7 @@ void set_struct (struct datos_persona *ptr_struct, int selector,int cantidad,int
 			break;
 			
 		}//fin del switch
-
+	
 }//fin del set
 
 
@@ -91,60 +85,23 @@ void print_struct (struct datos_persona *ptr_struct, int selector){
 }//fin del print
 //en el main se llaman las funciones para su ejecucion
 int main(){
-	int cantidad=0,bool_datos=0,bool_todos;
-	bool datos_ok,todos;
-	int *ptr_datos=NULL;
-	//el puntero tipo struct datos_persona para poder moverme entre las "casillas" del struct
-	struct datos_persona *ptr_struct=NULL;
-	ptr_datos=&cantidad;
-	num_datos(ptr_datos);
 	//se crea la varaible dato tipo array para decirle al puntero que inicie en la primer casilla de el struct
-	struct datos_persona dato[cantidad];
+	struct datos_persona dato[SIZE];
+	//el puntero tipo struct datos_persona para poder moverme entre las "casillas" del struct
+	struct datos_persona *ptr_struct;
 	ptr_struct=&dato[0];
 	int selector;
 	//se hace un for para que escriba los valores recibidos
-	for(selector=0;selector<cantidad;selector++){
-		set_struct(ptr_struct,selector,cantidad,ptr_datos);
+	for(selector=0;selector<SIZE;selector++){
+		set_struct(ptr_struct,selector);
 		//al aumentar el valor del puntero se cambia el espacio del arreglo
 		ptr_struct++;
 	}
-	printf("Los datos estan correctos?\n0.No\n1.Si");
-	scanf("%d",&bool_datos);
-	datos_ok=bool_datos;
-	switch(datos_ok){
-		case 0:
-			printf("Desea corregir los datos de todos los estudiantes?\n0.No\n1.Si");
-			scanf("%d",&bool_todos);
-			todos=bool_todos;
-			if(todos=true){
-					
-				
-			}
-			else{
-				
-			}
-		break;
-		case 1:
-			printf("Desea imprimir los datos de todos los estudiantes?\n0.No\n1.Si");
-			scanf("%d",&bool_todos);
-			todos=bool_todos;
-			if(todos=true){
-				ptr_struct=&dato[0];
-				for(selector=0;selector<cantidad;selector++){
-					print_struct(ptr_struct,selector);
-					ptr_struct++;
-				}//fin for
-			}
-			else{
-				
-			}
-		break;
-	}//fin swtich
-	
+		
 	//se vuelve a mandar el puntero a la posición inicial en el struct para imprimir desde el inicio
 	ptr_struct=&dato[0];
 	
-	for(selector=0;selector<cantidad;selector++){
+	for(selector=0;selector<SIZE;selector++){
 		print_struct(ptr_struct,selector);
 		ptr_struct++;
 	}
