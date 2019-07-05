@@ -1,0 +1,22 @@
+#!/bin/bash
+
+op=$1
+num1=$2
+num2=$3
+
+if [ -z "$op" ]||[ -z $num1 ]||[ -z $num2 ]; then
+ resultado="Por favor ingrese los parametos de la forma: ./calculadora operacion numero1 numero2"
+elif [ "$op" == "resta" ]; then
+ ((res=$num1 - $num2))
+ resultado="El resultado de restar "$num1" - "$num2" es igual a: "$res
+
+elif [ "$op" == "multiplicacion" ]; then
+ ((res=$num1 * $num2))
+ resultado="El resultado de multiplicar "$num1" x "$num2" es igual a: "$res
+
+elif [ "$op" == "division" ]; then
+ ((res=$num1 / $num2))
+ resultado="El resultado de dividir "$num1" / "$num2" es igual a: "$res
+
+elif [ "$op" == "pares" ]; then
+ ((par1=$num1%2))
