@@ -1,0 +1,22 @@
+#!/bin/bash
+
+op=$1
+num1=$2
+num2=$3
+
+function null {
+ resultado="Por favor ingrese los parametos de la forma: ./calculadora operacion numero1 numero2"
+}
+
+function resta {
+ ((res=$1 - $2))
+ resultado="El resultado de restar "$num1" - "$num2" es igual a: "$res
+}
+
+function multiplicacion {
+ ((res=$1 * $2))
+ resultado="El resultado de multiplicar "$num1" x "$num2" es igual a: "$res
+}
+
+function division {
+ ((res=$1 / $2))
