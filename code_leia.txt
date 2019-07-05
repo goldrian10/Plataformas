@@ -1,0 +1,10 @@
+hexdump −C leia.encr > leia.hex
+sort −k5 leia.hex > leia.code
+grep 2b leia.code > leia.filtro
+grep 37 leia.filtro > leia.mensaje
+sort −k7 leia.mensaje > leia1.mensaje
+cat leia1.mensaje | awk '{print $3}' > leia.mf
+cat leia.mf | sed 's/70/a/g'| sed 's/38/n/g' |sed 's/3e/d/g' | sed 's/bd/m/g' | ...
+sed 's/3c/1/g'| sed 's/5e/c/g'| sed 's/3a/i/g' | sed 's/4f/r/g' | sed ...
+'s/37/u/g' | sed 's/b0/k/g' | sed 's/6a/p/g' | sed 's/74/g/g' | sed ...
+'s/2b/x/g' | sed 's/cc/q/g' | sed 's/a5/t/g' > localizacion
